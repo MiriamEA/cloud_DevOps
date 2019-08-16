@@ -1,9 +1,7 @@
 
 # Introduction
-This project describes the process of deploying my [Trading App](github.com/MiriamEA/trading_app)
-
-What project you will deploy and project GitHub URL (your implementation is preferred)
-Describe your project at a high level (microserver, psql, java)
+This project describes the process of deploying my [Trading App](https://github.com/MiriamEA/trading_app) on AWS.
+The trading app is a REST API developed in Java that uses a PostgreSQL database to persist data.
 
 # Docker Architecture Diagram
 ![docker architecture](https://github.com/MiriamEA/cloud_DevOps/blob/master/assets/trading-app-docker.svg)
