@@ -1,4 +1,7 @@
+
 # Introduction
+This project describes the process of deploying my [Trading App](github.com/MiriamEA/trading_app)
+
 What project you will deploy and project GitHub URL (your implementation is preferred)
 Describe your project at a high level (microserver, psql, java)
 
@@ -25,5 +28,5 @@ Describe your project at a high level (microserver, psql, java)
   - security groups
   - label all important ports(e.g. ALB HTTP, ec2 tpc:5000, RDS tcp:5432)
   
-# Elastic Beanstalk (TODO)
-# Jenkins CI/CD pipeline (TODO)
+# AWS EB and Jenkins CI/CD Pipeline Diagram
+- Please refer to Jenkins guide architecture diagram.
