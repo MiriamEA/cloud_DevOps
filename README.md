@@ -57,3 +57,6 @@ When there are changes in the code, the new code can be uploaded once and EB tak
 The need to manually upload new code can be eliminated by using a CI/CD (Continuous Integration/Continuous Deployment) pipeline.
 In this project Jenkins was used to created such a pipeline. 
 Jenkins monitors the trading_app GitHub repository. Whenever there is a new commit it will automatically compile, package, and deploy the new code to all running EC2 instances.
+
+This diagram shows the architecture of the deployment with EB and Jenkins.
+![EB_Jenkings architecture](https://github.com/MiriamEA/cloud_DevOps/blob/master/assets/EB_Jenkins.svg)
