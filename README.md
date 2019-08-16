@@ -54,4 +54,4 @@ AWS provids the service Elastic Beanstalk to make this process easier.
 Elastic Beanstalk requires one setup and then it automatically handles the deployment, from capacity provisioning, load balancing, auto-scaling to application health monitoring. 
 When there are changes in the code, the new code can be uploaded once and EB takes care of updating every EC2 instance.
 
-- Please refer to Jenkins guide architecture diagram.
+![EB_Jenkings architecture](https://github.com/MiriamEA/cloud_DevOps/blob/master/assets/EB_Jenkins-Page.svg)
