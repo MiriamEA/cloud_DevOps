@@ -4,7 +4,7 @@ This project describes the process of deploying my [Trading App](https://github.
 The trading app is a REST API developed in Java that uses a PostgreSQL database to persist data.
 
 # Docker Deployment
-This first method to deploy the app makes use of Docker containers. 
+This first method to deploy the app makes use of Docker containers on an EC2 instance (needs to be setup manually). 
 The app requires two containers: one for PostgreSQL to run the database, and one to run the app.
 In order for those two containers to communicate a network bridge is required and both containers need to be connected to the network.
 The bridge is created with the following command ```sudo docker network create --driver bridge trading-net```.
@@ -13,21 +13,34 @@ Building the two containers requires a local docker image for both.
 The instructions on how to create the images are in the two Dockerfiles.
 The [Dockerfile for the app image](https://github.com/MiriamEA/trading_app/blob/master/Dockerfile) is built on the maven image and the openjdk image from Docker Hub. Maven is required to compile and package the code into a jar-file and openjdk is required to run the jar-file.
 The [Dockerfile for the PSQL image](https://github.com/MiriamEA/trading_app/blob/master/psql/Dockerfile) is built on the postgres image from Docker Hub. It will automatically create the database and all required tables.
+The commands for creating the two local images are the following:
+```
+sudo docker build -t trading-app .
+sudo docker build -t psql .
+```
+Once the images are created the two container can be built with the following commands:
+```
+sudo docker run --rm --name psql \
+-e POSTGRES_PASSWORD=password \
+-e POSTGRES_DB=jrvstrading \
+-e POSTGRES_USER=postgres \
+--network trading-net \
+-d -p 5432:5432 psql
+```
+and 
+```
+sudo docker run \
+-e "PSQL_URL=jdbc:postgresql://psql:5432/jrvstrading" \
+-e "PSQL_USER=postgres" \
+-e 'PSQL_PASSWORD=password' \
+-e "IEX_PUB_TOKEN=YOUR_TOKEN" \
+--network trading-net \
+-p 5000:5000 -t trading-app
+```
+Now, the app is deployed.
 
-
+This diagram shows the architecture of this deployment.
 ![docker architecture](https://github.com/MiriamEA/cloud_DevOps/blob/master/assets/trading-app-docker.svg)
-- trading_app docker diagram including:
- - use draw.io and AWS icons (it's already in draw.io library)
- - images (docker hub and local)
- - bridge network
- - containers
- - label commands
-
-- Two docker files
-  - trading-app
-   - talk about the process (e.g. compile and package jar and run the app)
-  - jrvs-psql
-   - talk about how to create tables (e.g. schema.sql)
 
 # Cloud Deployment
 ![cloud architecture](https://github.com/MiriamEA/cloud_DevOps/blob/master/assets/trading-app-aws.svg)
