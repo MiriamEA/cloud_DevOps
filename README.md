@@ -1,4 +1,3 @@
-
 # Introduction
 This project describes the process of deploying my [Trading App](https://github.com/MiriamEA/trading_app) on AWS.
 The trading app is a REST API developed in Java that uses a PostgreSQL database to persist data.
@@ -39,16 +38,15 @@ sudo docker run \
 ```
 Now, the app is deployed.
 
-This diagram shows the architecture of this deployment.
+This diagram shows the architecture of the deployment with Docker.
 ![docker architecture](https://github.com/MiriamEA/cloud_DevOps/blob/master/assets/trading-app-docker.svg)
 
 # Cloud Deployment
+The second method to deploy the app uses the AWS database service instead of a local database. It also uses an auto scaling group and a load balancer, which allow horizontal scaling of the application.
+The auto scaling group decides how many EC2 instances are running in the target group and the load balancer distributes incoming requests among all running EC2 instances in the target group. 
+
+This diagram shows the architecture of the manual cloud deployment.
 ![cloud architecture](https://github.com/MiriamEA/cloud_DevOps/blob/master/assets/trading-app-aws.svg)
-- trading app diagram
-  - use draw.io and aws icons (it's in the draw.io library)
-  - include ec2, alb, auto scaling, target group, rds
-  - security groups
-  - label all important ports(e.g. ALB HTTP, ec2 tpc:5000, RDS tcp:5432)
   
 # AWS EB and Jenkins CI/CD Pipeline Diagram
 - Please refer to Jenkins guide architecture diagram.
