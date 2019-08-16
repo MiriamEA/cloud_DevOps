@@ -58,5 +58,7 @@ The need to manually upload new code can be eliminated by using a CI/CD (Continu
 In this project Jenkins was used to created such a pipeline. 
 Jenkins monitors the trading_app GitHub repository. Whenever there is a new commit it will automatically compile, package, and deploy the new code to all running EC2 instances.
 
+Jenkins requires a [Jenkinsfiles](https://github.com/MiriamEA/trading_app/blob/master/Jenkinsfile) that specifies how to handle the new code.
+
 This diagram shows the architecture of the deployment with EB and Jenkins.
 ![EB_Jenkings architecture](https://github.com/MiriamEA/cloud_DevOps/blob/master/assets/EB_Jenkins.svg)
