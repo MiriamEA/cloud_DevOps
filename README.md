@@ -48,10 +48,12 @@ The auto scaling group decides how many EC2 instances are running in the target 
 This diagram shows the architecture of the manual cloud deployment.
 ![cloud architecture](https://github.com/MiriamEA/cloud_DevOps/blob/master/assets/trading-app-aws.svg)
   
-# AWS EB and Jenkins CI/CD Pipeline Diagram
+# AWS Elastic Beanstalk and Jenkins CI/CD Pipeline
 In the last method all components had to be configured manually and every code update had to be deployed manually on every running instance, which is a lot of work.
 AWS provids the service Elastic Beanstalk to make this process easier.
 Elastic Beanstalk requires one setup and then it automatically handles the deployment, from capacity provisioning, load balancing, auto-scaling to application health monitoring. 
 When there are changes in the code, the new code can be uploaded once and EB takes care of updating every EC2 instance.
 
-![EB_Jenkings architecture](https://github.com/MiriamEA/cloud_DevOps/blob/master/assets/EB_Jenkins.svg)
+The need to manually upload new code can be eliminated by using a CI/CD (Continuous Integration/Continuous Deployment) pipeline.
+In this project Jenkins was used to created such a pipeline. 
+Jenkins monitors the trading_app GitHub repository. Whenever there is a new commit it will automatically compile, package, and deploy the new code to all running EC2 instances.
