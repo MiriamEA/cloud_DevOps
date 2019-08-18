@@ -59,7 +59,7 @@ In this project Jenkins was used to created such a pipeline.
 Jenkins monitors the trading_app GitHub repository. Whenever there is a new commit it will automatically compile, package, and deploy the new code to all running EC2 instances.
 
 Jenkins requires a [Jenkinsfiles](https://github.com/MiriamEA/trading_app/blob/master/Jenkinsfile) that specifies how to handle the new code.
-The stage 'Build' packages the code using maven and specifies that the required package is a zip-folder under the folder target.
+The stage 'Build' packages the code using maven.
 The two stages 'Deploy-prod' and 'Deploy-dev' call script to deploy the code. The argument specifies which EB environment to use. This depends on the GitHub branch that was compiled.
 The actual deployment is done by the [eb_deploy script](https://github.com/MiriamEA/trading_app/blob/master/scripts/eb_deploy.sh) using the Elastic Beanstalk Command Line Interface.
 
